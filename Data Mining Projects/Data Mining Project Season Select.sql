@@ -16,6 +16,10 @@ select * from DataMining.order_train0 where order_date between '2018-1-01' and '
 select * from DataMining.order_train0 where order_date between '2018-05-01' and '2018-08-31';
 select * from DataMining.order_train0 where order_date between '2018-09-01' and '2018-12-31';
 
+delete from DataMining.order_train0 where item_price>30000;
+select * from DataMining.order_train0;
+
+
 
 
 
