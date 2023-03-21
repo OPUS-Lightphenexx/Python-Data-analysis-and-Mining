@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import datetime
 
 from matplotlib.font_manager import FontProperties  # 导入FontProperties
 my_font = FontProperties(fname="C:\Windows\Fonts\simkai.ttf", size=14)  # 设置字体
@@ -48,6 +47,7 @@ plt.xlabel('Price')
 plt.ylabel('Order amount')
 plt.title('Price-Needs')
 cov = np.cov(x,y)
+plt.grid()
 #print(cov)
 plt.show()
 
@@ -58,6 +58,7 @@ plt.bar(x=pivot_table_region.index,height=pivot_table_region['ord_qty'])
 plt.xlabel('Regions')
 plt.ylabel('Order amount')
 plt.title('Region-Needs')
+plt.grid()
 plt.show()
 
 #根据大类发现产品大类指标，随着该代码的增加，其需求越高
@@ -67,6 +68,7 @@ plt.bar(x=pivot_table_class.index,height=pivot_table_class['ord_qty'])
 plt.xlabel('First Class')
 plt.ylabel('Order Amount')
 plt.title('First Class-Needs')
+plt.grid()
 plt.show()
 
 #线下线上售卖情况
@@ -76,6 +78,7 @@ plt.bar(x=pivot_table_sales_chan.index,height=pivot_table_sales_chan['ord_qty'])
 plt.xlabel('Order Type')
 plt.ylabel('Order Amount')
 plt.title('Order Type-Needs')
+plt.grid()
 plt.show()
 
 #细类画图
@@ -87,6 +90,7 @@ plt.xlabel('Second Class')
 plt.ylabel('Order Amount')
 x = range(401,413,1)
 plt.xticks(x)
+plt.grid()
 plt.show()
 
 
@@ -120,6 +124,7 @@ plt.xticks(rotation=45)
 plt.title('Seasons Sales')
 plt.xlabel('Year-Seasons')
 plt.ylabel('Sales')
+plt.grid()
 plt.show()
 
 #统计季度一样,年份不一样
@@ -134,6 +139,7 @@ plt.xticks(rotation=45)
 plt.title('Seasons Three Sales')
 plt.xlabel('Year-Seasons')
 plt.ylabel('Sales')
+plt.grid()
 plt.show()
 
 #第二季度
@@ -146,6 +152,7 @@ plt.xticks(rotation=45)
 plt.title('Seasons Two Sales')
 plt.xlabel('Year-Seasons')
 plt.ylabel('Sales')
+plt.grid()
 plt.show()
 
 #第一季度
@@ -158,11 +165,106 @@ plt.xticks(rotation=45)
 plt.title('Seasons One Sales')
 plt.xlabel('Year-Seasons')
 plt.ylabel('Sales')
+plt.grid()
 plt.show()
 
-#线性回归开始
+#产品编码和价格的散点图
+read_csv1_what = pd.read_csv(r'异常值处理item code-price.csv')
+x = read_csv1_what['20028']
+y = read_csv1_what['1005']
+plt.scatter(x,y,color='green')
+plt.title('Item Code-Price')
+plt.xlabel('Item Code')
+plt.ylabel('Item Price')
+plt.grid()
+plt.show()
+
+#可以按照区域-每月-价格进行统计(2016)年
+read_2016_1 = pd.read_csv(r'C:\Users\14380\Desktop\Data Mining Projects\Data Mining Projects 分季度统计数据\2016年第一季度.csv')
+read_2016_1.columns=['1','2','3','4','5','6','7','8']
+read_2016_2 = pd.read_csv(r'C:\Users\14380\Desktop\Data Mining Projects\Data Mining Projects 分季度统计数据\2016年第二季度.csv')
+read_2016_2.columns=['1','2','3','4','5','6','7','8']
+read_2016_3 = pd.read_csv(r'C:\Users\14380\Desktop\Data Mining Projects\Data Mining Projects 分季度统计数据\2016年第三季度.csv')
+read_2016_3.columns = ['1','2','3','4','5','6','7','8']
 
 
+#2016年第一季度
+read_2016_1_region_101 = read_2016_1[(read_2016_1['2']==101)]
+read_2016_1_region_101_sum = sum(read_2016_1_region_101['8'])#
+
+read_2016_1_region_102 = read_2016_1[(read_2016_1['2']==102)]
+read_2016_1_region_102_sum = sum(read_2016_1_region_102['8'])
+
+read_2016_1_region_103 = read_2016_1[(read_2016_1['2']==103)]
+read_2016_1_region_103_sum = sum(read_2016_1_region_103['8'])
+
+read_2016_1_region_104 = read_2016_1[(read_2016_1['2']==104)]
+read_2016_1_region_104_sum = sum(read_2016_1_region_104['8'])
+
+read_2016_1_region_105 = read_2016_1[(read_2016_1['2']==105)]
+read_2016_1_region_105_sum = sum(read_2016_1_region_105['8'])
+
+#2016年第二季度
+read_2016_2_region_101 = read_2016_2[(read_2016_2['2']==101)]
+read_2016_2_region_101_sum = sum(read_2016_2_region_101['8'])
+
+read_2016_2_region_102 = read_2016_2[(read_2016_2['2']==102)]
+read_2016_2_region_102_sum = sum(read_2016_2_region_102['8'])
+
+read_2016_2_region_103 = read_2016_2[(read_2016_2['2']==103)]
+read_2016_2_region_103_sum = sum(read_2016_2_region_103['8'])
+
+read_2016_2_region_104 = read_2016_2[(read_2016_2['2']==104)]
+read_2016_2_region_104_sum = sum(read_2016_2_region_104['8'])
+
+read_2016_2_region_105 = read_2016_2[(read_2016_2['2']==105)]
+read_2016_2_region_105_sum = sum(read_2016_2_region_105['8'])
+
+#2016年第三季度
+read_2016_3_region_101 = read_2016_3[(read_2016_3['2']==101)]
+read_2016_3_region_101_sum = sum(read_2016_3_region_101['8'])#
+
+read_2016_3_region_102 = read_2016_3[(read_2016_3['2']==102)]
+read_2016_3_region_102_sum = sum(read_2016_3_region_102['8'])
+
+read_2016_3_region_103 = read_2016_3[(read_2016_3['2']==103)]
+read_2016_3_region_103_sum = sum(read_2016_3_region_103['8'])
+
+read_2016_3_region_104 = read_2016_3[(read_2016_3['2']==104)]
+read_2016_3_region_104_sum = sum(read_2016_3_region_104['8'])
+
+read_2016_3_region_105 = read_2016_3[(read_2016_3['2']==105)]
+read_2016_3_region_105_sum = sum(read_2016_3_region_105['8'])
+
+sums_region_101 = [read_2016_1_region_101_sum,
+                   read_2016_2_region_101_sum,
+                   read_2016_3_region_101_sum]
+
+sums_region_102 = [read_2016_1_region_102_sum,
+                   read_2016_2_region_102_sum,
+                   read_2016_3_region_102_sum]
+sums_region_103 = [read_2016_1_region_103_sum,
+                   read_2016_2_region_103_sum,
+                   read_2016_3_region_103_sum]
+sums_region_104 = [read_2016_1_region_104_sum,
+                   read_2016_2_region_104_sum,
+                   read_2016_3_region_104_sum]
+sums_region_105 = [read_2016_1_region_105_sum,
+                   read_2016_2_region_105_sum,
+                   read_2016_3_region_105_sum]
+
+plt.plot(sums_region_101,label='101')
+plt.plot(sums_region_102,color='y',label='102')
+plt.plot(sums_region_103,color='r',label='103')
+plt.plot(sums_region_104,color='g',label='104')
+plt.plot(sums_region_105,color='purple',label='105')
+plt.xticks(range(0,3),['{} Seasons'.format(i) for i in ['First','Second','Third']])
+plt.xlabel('Seasons')
+plt.ylabel('Sales Amount')
+plt.title('Order Amount Based On Item Region Code-Seasons')
+plt.legend()
+plt.grid()
+plt.show()
 
 
 
